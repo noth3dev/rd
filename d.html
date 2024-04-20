@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>종화의 사회수행</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    textarea {
+        width: 80%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin: 10px 0;
+        resize: none;
+    }
+    button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    h1 {
+        color: #333;
+    }
+</style>
+<script>
+function extractRandomText() {
+    var inputText = document.getElementById('inputText').value;
+    if (inputText.length < 1400) {
+        alert('텍스트는 1400자 이상.');
+        return;
+    }
+    var randomIndices = new Set();
+    while (randomIndices.size < 1000) {
+        randomIndices.add(Math.floor(Math.random() * inputText.length));
+    }
+    var selectedText = Array.from(randomIndices).map(index => inputText[index]).join('');
+    document.getElementById('outputText').value = selectedText;
+}
+</script>
+</head>
+<body>
+<h1>종화야 내가 도와줄게</h1>
+<textarea id="inputText" rows="10" placeholder="여기 입력."></textarea>
+<button onclick="extractRandomText()">종화야 내가 도와줄게</button>
+<textarea id="outputText" rows="10" placeholder="여기 결과." readonly></textarea>
+</body>
+</html>
